@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./Button.module.css";
 import PropTypes from 'prop-types'
 
@@ -9,19 +9,20 @@ import PropTypes from 'prop-types'
  * @returns 
  */
 const Button = (props) => {
-    console.log(props)
+
+    const [isClicked, setIsClicked] = useState(false)
+    //console.log(props)
     return (
         <div>
             <button
                 style={{
                     ...props.style,
                     backgroundColor: props.bgColor,
-                    
                 }}
-                className={styles.MyButton}
+                className={isClicked ? styles.MyButton + ' ' + styles.clicked : styles.MyButton}
                 onClick={(e) => {
-                    props.onClick("ALLO");
-                    
+                    props.onClick("ALO");
+                    setIsClicked(!isClicked)
                 }}
             >
                 {props.children}
@@ -43,7 +44,11 @@ Button.defaultProps = {
     children: "hello",
     onClick: () => { },
     text: "default",
-    bgColor:"white"
+    bgColor: "white"
 };
+
+
+
+
 
 export default Button;

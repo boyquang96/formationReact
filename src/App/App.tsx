@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 import Button from './components/ui/Button/Button';
@@ -7,20 +7,24 @@ import Button from './components/ui/Button/Button';
  * @returns rendu jsx
  */
 function App() {
+
+  const [counter, setCounter] = useState(0);
+  useEffect(() => {
+    // return () => {
+    //   effect
+    // };
+    console.log(counter)
+  }, [counter])
+
   return (
     <div className="App" data-testid="App" >
-      <Button text="un bouton" onClick={(text: any) => console.log(text)} bgColor="pink" style={{ backgroundColor:"red" }} >
-        <img alt='image1' src='https://cdn-icons-png.flaticon.com/512/4436/4436481.png' width={30} height={30} />
-        OK
+      <div>Counter value: {counter}</div>
+      <Button text="un bouton" onClick={() => { setCounter(counter + 1); }} bgColor="pink" style={{ backgroundColor: "red" }} >
+        +
       </Button>
-
-
-
-      <Button text={"un autre bouton"} style={{ color:"red" }} >
-        test
+      <Button onClick={() => { setCounter(counter - 1); }} text={"un autre bouton"} style={{ color: "red" }} >
+        -
       </Button>
-
-
     </div>
   );
 }
