@@ -3,7 +3,7 @@ import React from 'react'
 import styles from "./Button.module.css";
 
 const Button = (props) => {
-    //console.log(props)
+    console.log(props)
     return (
         <div>
             <button 
@@ -12,7 +12,7 @@ const Button = (props) => {
                     props.onClick && props.onClick("ALLO");
                 }} 
             > 
-                {props.text} 
+                {props.children} 
             </button>
         </div>
     )
