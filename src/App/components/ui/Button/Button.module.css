@@ -4,6 +4,27 @@
     color: black;
     background: skyblue;
     font-size: large;
+    font-weight: 300;
+    border-radius: 30%;
+}
+
+.MyButton:hover {
+    padding: 50px 50px;
+    margin: 5px;
+    color: black;
+    background: skyblue;
+    font-size: large;
     font-weight: bold;
-    border-radius: 79%;
+    border-radius: 70%;
+    box-shadow: 10px 10px 10px blueviolet;
+}
+
+.NormalButton {
+    padding: 50px 50px;
+    margin: 5px;
+    color: black;
+    background: skyblue;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 30%;
 }
