@@ -1,11 +1,16 @@
 import React from 'react';
-// import logo from '../logo.svg';
-import './App.css';
 
+import './App.css';
+import Button from './components/ui/Button/Button';
+/**
+ * 
+ * @returns rendu jsx
+ */
 function App() {
   return (
     <div className="App" data-testid="App" >
-      DEMAT
+      <Button text="un bouton" onClick={(text: any) => console.log(text)} />
+      <Button text="un autre bouton"  />
     </div>
   );
 }

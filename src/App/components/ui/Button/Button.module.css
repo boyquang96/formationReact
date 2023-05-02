@@ -1,0 +1,9 @@
+.MyButton {
+    padding: 50px 50px;
+    margin: 5px;
+    color: black;
+    background: skyblue;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 79%;
+}
