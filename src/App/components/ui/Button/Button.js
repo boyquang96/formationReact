@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./Button.module.css";
 import PropTypes from 'prop-types'
 
@@ -9,8 +9,25 @@ import PropTypes from 'prop-types'
  * @returns 
  */
 const Button = (props) => {
-
     const [isClicked, setIsClicked] = useState(false)
+
+
+    useEffect(() => {
+        let descripteurTimeout = undefined;
+        if(isClicked) {
+            descripteurTimeout = setTimeout(() => {
+                setIsClicked(false)
+            }, 100);
+        }
+
+        return () => {
+            if(descripteurTimeout) {
+                clearTimeout(descripteurTimeout);
+            }
+        };
+    }, [isClicked])
+
+
     //console.log(props)
     return (
         <div>
@@ -22,7 +39,8 @@ const Button = (props) => {
                 className={isClicked ? styles.MyButton + ' ' + styles.clicked : styles.MyButton}
                 onClick={(e) => {
                     props.onClick("ALO");
-                    setIsClicked(!isClicked)
+
+                    setIsClicked(true)
                 }}
             >
                 {props.children}
