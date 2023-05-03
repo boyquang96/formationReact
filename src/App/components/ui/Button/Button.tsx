@@ -3,17 +3,20 @@ import React, { useState, useEffect } from 'react'
 import styles from "./Button.module.css";
 import PropTypes from 'prop-types'
 
-/**
- * 
- * @param {*} props 
- * @returns 
- */
-const Button = (props) => {
+interface IPropsButton {
+    onClick: Function,
+    children: Array<React.ReactElement|string>|string|React.ReactElement,
+    bgColor?: string,
+    style:{}|undefined, //ou object  --> obligatoire mais qui peut etre undefined,
+    text?: string //? --> pas obligatoire
+}
+
+const Button: React.FC<IPropsButton> = (props) => {
     const [isClicked, setIsClicked] = useState(false)
 
 
     useEffect(() => {
-        let descripteurTimeout = undefined;
+        let descripteurTimeout: any = undefined;
         if(isClicked) {
             descripteurTimeout = setTimeout(() => {
                 setIsClicked(false)
@@ -49,21 +52,21 @@ const Button = (props) => {
     )
 };
 
-//définir les types des props
-Button.propTypes = {
-    onClick: PropTypes.func.isRequired,
-    children: PropTypes.any.isRequired,
-    text: PropTypes.any.isRequired,
-    bgColor: PropTypes.any.isRequired,
-    style: PropTypes.object
-};
+// //définir les types des props
+// Button.propTypes = {
+//     onClick: PropTypes.func.isRequired,
+//     children: PropTypes.any.isRequired,
+//     text: PropTypes.any.isRequired,
+//     bgColor: PropTypes.any.isRequired,
+//     style: PropTypes.object
+// };
 //définir les valeurs des props par défaut
-Button.defaultProps = {
-    children: "hello",
-    onClick: () => { },
-    text: "default",
-    bgColor: "white"
-};
+// Button.defaultProps = {
+//     children: "hello",
+//     onClick: () => { },
+//     text: "default",
+//     bgColor: "white"
+// };
 
 
 

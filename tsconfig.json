@@ -23,5 +23,5 @@
   },
   "include": [
     "src"
-  ]
+, "grc/genericFunction/TemplateName.js"  ]
 }

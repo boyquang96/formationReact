@@ -16,3 +16,14 @@ src
                     --pages
 
 
+## générer fichier json qui permet de configurer par défaut 
+
+npx generate-react-cli
+
+## mettre à jour le fichier json avec nom des type des componsant (ex: uiCmp, layoutCmp,...)
+
+définir le chemin, les paramètres, etc.
+
+## générer un composant par défaut avec son type, par exemple "Header", "Footer"
+
+npx generate-react-cli c Header Footer --type=uiCmp
