@@ -27,3 +27,10 @@ définir le chemin, les paramètres, etc.
 ## générer un composant par défaut avec son type, par exemple "Header", "Footer"
 
 npx generate-react-cli c Header Footer --type=uiCmp
+
+
+
+# utilisation de yarn à la place de npm
+
+npm i -g yarn
+yarn add orsys-tjs-meme
