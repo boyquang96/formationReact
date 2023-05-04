@@ -1,24 +1,25 @@
-import React, { Component } from 'react'
+import React  from 'react'
 import Header from './components/ui/Header/Header'
 import Navbar from './components/ui/Navbar/Navbar'
 import WFirstGrow from './components/layout/WFirstGrow/WFirstGrow'
-import MemeForm from './components/functional/MemeForm/MemeForm'
-import Footer from './components/ui/Footer/Footer'
-import { ImageInterface, MemeSVGViewer, emptyMeme } from 'orsys-tjs-meme'
-import { MemeInterface } from "orsys-tjs-meme"
-
+ import Footer from './components/ui/Footer/Footer'
+ import store from "./components/store/store"
+import { addImages } from './components/store/ressources'
+import StoreMemeForm from './components/functional/MemeForm/StoreMemeForm'
+import  { ReduxModal } from './components/Modal/Modal'
+import StoreMemeSVGViewer from './components/ui/StoreMemeSVGViewer/StoreMemeSVGViewer'
 interface iAppState {
-  meme: MemeInterface;
-  images: Array<ImageInterface>;
+  // meme: MemeInterface;
+  // images: Array<ImageInterface>;
 }
 interface iAppProps { }
 
 export default class App extends React.Component<iAppProps, iAppState> {
 
-  constructor(props: iAppProps) {
-    super(props);
-    this.state = { meme: emptyMeme, images: [] }
-  }
+  // constructor(props: iAppProps) {
+  //   super(props);
+  //   this.state = { meme: emptyMeme, images: [] }
+  // }
 
   componentDidMount(): void {
     fetch('http://localhost:5679/images', {
@@ -27,7 +28,11 @@ export default class App extends React.Component<iAppProps, iAppState> {
       }
     })
       .then(r => r.json())
-      .then(arr => this.setState({ images: arr }));
+      .then(arr => {
+        this.setState({ images: arr });
+        store.dispatch(addImages(arr))
+      });
+
   }
 
   render() {
@@ -36,18 +41,20 @@ export default class App extends React.Component<iAppProps, iAppState> {
         <Header />
         <Navbar />
         <WFirstGrow>
-          <MemeSVGViewer
+          <StoreMemeSVGViewer
             basePath=""
-            meme={this.state.meme}
-            image={this.state.images.find((img) => img.id === this.state.meme.imageId)}
           />
-          <MemeForm meme={this.state.meme} onMemeChange={(meme: MemeInterface) => {
-            this.setState({ meme: meme });
-          }}
-           images={this.state.images}
-           />
+          <StoreMemeForm  
+            // onMemeChange={(meme: MemeInterface) => {
+            //   this.setState({ meme: meme });
+            // }}
+            //images={this.state.images}
+            //meme={this.state.meme}
+          />
         </WFirstGrow>
         <Footer />
+
+          <ReduxModal />
       </div>
     )
   }

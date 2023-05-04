@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './MemeForm.module.css';
 import { emptyMeme } from 'orsys-tjs-meme'
 import Button from '../../ui/Button/Button';
+import { useSelector } from 'react-redux';
+import store from '../../store/store';
 
 let memeFormInitialState = {}
 
@@ -159,3 +161,9 @@ MemeForm.propTypes = {
 MemeForm.defaultProps = {};
 
 export default MemeForm;
+
+
+function StoreMemeForm(props) {
+  const images = useSelector(storeState => storeState.ressources.images)
+  return <MemeForm {...props} />
+}
