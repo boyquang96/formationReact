@@ -41,3 +41,8 @@ yarn add orsys-tjs-meme
 créer un fichier db.json
 lancer le server:
 npx json-server -p 5679 db/db.json
+
+## installer redux
+npm i @reduxjs/toolkit react-redux
+
+
