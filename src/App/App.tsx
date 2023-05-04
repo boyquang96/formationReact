@@ -2,9 +2,9 @@ import React  from 'react'
 import Header from './components/ui/Header/Header'
 import Navbar from './components/ui/Navbar/Navbar'
 import WFirstGrow from './components/layout/WFirstGrow/WFirstGrow'
- import Footer from './components/ui/Footer/Footer'
- import store from "./components/store/store"
-import { addImages } from './components/store/ressources'
+import Footer from './components/ui/Footer/Footer'
+import store from "./components/store/store"
+import { addImages, fetchImages, fetchMemes } from './components/store/ressources'
 import StoreMemeForm from './components/functional/MemeForm/StoreMemeForm'
 import  { ReduxModal } from './components/Modal/Modal'
 import StoreMemeSVGViewer from './components/ui/StoreMemeSVGViewer/StoreMemeSVGViewer'
@@ -22,17 +22,18 @@ export default class App extends React.Component<iAppProps, iAppState> {
   // }
 
   componentDidMount(): void {
-    fetch('http://localhost:5679/images', {
-      headers: {
-        Origin: "https://localhost:5679"
-      }
-    })
-      .then(r => r.json())
-      .then(arr => {
-        this.setState({ images: arr });
-        store.dispatch(addImages(arr))
-      });
-
+    // fetch('http://localhost:5679/images', {
+    //   headers: {
+    //     Origin: "https://localhost:5679"
+    //   }
+    // })
+    //   .then(r => r.json())
+    //   .then(arr => {
+    //     this.setState({ images: arr });
+    //     store.dispatch(addImages(arr))
+    //   });
+    store.dispatch(fetchImages());
+    store.dispatch(fetchMemes());
   }
 
   render() {

@@ -46,3 +46,6 @@ npx json-server -p 5679 db/db.json
 npm i @reduxjs/toolkit react-redux
 
 
+# contact
+
+06.64.27.63.60 (Alexandre)
