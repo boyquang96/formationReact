@@ -1,1 +1,6 @@
-.Footer {}
+.Footer {
+    background-color: aqua;
+    height: 100px;
+    text-align: right;
+    padding: 10px;
+}

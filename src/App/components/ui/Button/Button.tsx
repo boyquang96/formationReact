@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react'
 import styles from "./Button.module.css";
 import PropTypes from 'prop-types'
 
-interface IPropsButton {
-    onClick: Function,
+
+
+export interface IPropsButton {
+    onClick?: Function,
     children: Array<React.ReactElement|string>|string|React.ReactElement,
     bgColor?: string,
     style:{}|undefined, //ou object  --> obligatoire mais qui peut etre undefined,
     text?: string //? --> pas obligatoire
+    type?: 'button'|'submit'|'reset'|undefined
 }
 
 const Button: React.FC<IPropsButton> = (props) => {
@@ -33,40 +36,41 @@ const Button: React.FC<IPropsButton> = (props) => {
 
     //console.log(props)
     return (
-        <div>
             <button
+                type={props.type}
                 style={{
                     ...props.style,
                     backgroundColor: props.bgColor,
                 }}
                 className={isClicked ? styles.MyButton + ' ' + styles.clicked : styles.MyButton}
                 onClick={(e) => {
-                    props.onClick("ALO");
-
+                    //props.onClick("ALO");
+                    //e.preventDefault()
                     setIsClicked(true)
                 }}
             >
                 {props.children}
             </button>
-        </div>
     )
 };
 
-// //définir les types des props
-// Button.propTypes = {
-//     onClick: PropTypes.func.isRequired,
-//     children: PropTypes.any.isRequired,
-//     text: PropTypes.any.isRequired,
-//     bgColor: PropTypes.any.isRequired,
-//     style: PropTypes.object
-// };
+//définir les types des props
+Button.propTypes = {
+    onClick: PropTypes.func,
+    children: PropTypes.any.isRequired,
+    text: PropTypes.any.isRequired,
+    bgColor: PropTypes.any.isRequired,
+    style: PropTypes.object,
+    type: PropTypes.oneOf(['button', 'submit', 'reset', undefined])
+};
 //définir les valeurs des props par défaut
-// Button.defaultProps = {
-//     children: "hello",
-//     onClick: () => { },
-//     text: "default",
-//     bgColor: "white"
-// };
+Button.defaultProps = {
+    children: "hello",
+    onClick: () => { },
+    text: "default",
+    bgColor: "white",
+    type: 'button'
+};
 
 
 

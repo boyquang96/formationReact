@@ -34,3 +34,10 @@ npx generate-react-cli c Header Footer --type=uiCmp
 
 npm i -g yarn
 yarn add orsys-tjs-meme
+
+
+# utiliser un db server (ici json server)
+
+créer un fichier db.json
+lancer le server:
+npx json-server -p 5679 db/db.json

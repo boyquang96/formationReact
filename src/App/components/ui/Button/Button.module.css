@@ -1,5 +1,5 @@
 .MyButton {
-    padding: 50px 50px;
+    padding: 20px 20px;
     margin: 5px;
     color: black;
     background: skyblue;
@@ -11,10 +11,10 @@
 .MyButton:hover {
     font-weight: bold;
     border-radius: 70%;
-    box-shadow: 20px 20px 10px blueviolet;
+    box-shadow: 10px 10px 10px blueviolet;
 }
 
 
 .clicked {
-    box-shadow: 10px 10px 10px grey !important;
+    box-shadow: 5px 5px 5px grey !important;
 }
